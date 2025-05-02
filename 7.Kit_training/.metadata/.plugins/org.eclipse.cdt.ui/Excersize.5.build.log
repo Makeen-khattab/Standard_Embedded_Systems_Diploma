@@ -1,0 +1,42 @@
+07:04:27 **** Incremental Build of configuration Release for project Excersize.5 ****
+make all 
+Building file: ../Excersize.5.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"Excersize.5.d" -MT"Excersize.5.o" -c -o "Excersize.5.o" "../Excersize.5.c"
+Finished building: ../Excersize.5.c
+ 
+Building target: Excersize.5.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Excersize.5.map -mmcu=atmega32 -o "Excersize.5.elf"  ./Excersize.5.o   
+Finished building target: Excersize.5.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Excersize.5.elf  >"Excersize.5.lss"
+Finished building: Excersize.5.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Excersize.5.elf  "Excersize.5.hex"
+Finished building: Excersize.5.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Excersize.5.elf  "Excersize.5.eep"
+Finished building: Excersize.5.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Excersize.5.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     150 bytes (0.5% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+07:04:28 Build Finished. 0 errors, 0 warnings. (took 1s.237ms)
+

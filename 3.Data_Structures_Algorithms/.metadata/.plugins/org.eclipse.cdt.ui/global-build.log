@@ -1,0 +1,13 @@
+01:31:24 **** Rebuild of configuration Debug for project EX[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX[1].o "..\\EX[1].c" 
+gcc -o EX[1].exe EX[1].o 
+Info: Nothing to build for EX[1]
+Info: Nothing to build for EX[1]
+Info: Nothing to build for EX[1]
+Info: Nothing to build for EX[1]
+Info: Nothing to build for EX[1]
+01:32:48 **** Incremental Build of configuration Debug for project EX[1] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX[1].o "..\\EX[1].c" 
+gcc -o EX[1].exe EX[1].o 

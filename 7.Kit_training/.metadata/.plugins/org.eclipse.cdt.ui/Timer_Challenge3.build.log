@@ -1,0 +1,42 @@
+17:13:21 **** Incremental Build of configuration Release for project Timer_Challenge3 ****
+make all 
+Building file: ../Timer_Challenge3.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"Timer_Challenge3.d" -MT"Timer_Challenge3.o" -c -o "Timer_Challenge3.o" "../Timer_Challenge3.c"
+Finished building: ../Timer_Challenge3.c
+ 
+Building target: Timer_Challenge3.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Timer_Challenge3.map -mmcu=atmega32 -o "Timer_Challenge3.elf"  ./Timer_Challenge3.o   
+Finished building target: Timer_Challenge3.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Timer_Challenge3.elf  >"Timer_Challenge3.lss"
+Finished building: Timer_Challenge3.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Timer_Challenge3.elf  "Timer_Challenge3.hex"
+Finished building: Timer_Challenge3.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Timer_Challenge3.elf  "Timer_Challenge3.eep"
+Finished building: Timer_Challenge3.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Timer_Challenge3.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     138 bytes (0.4% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+17:13:22 Build Finished. 0 errors, 0 warnings. (took 1s.228ms)
+

@@ -1,0 +1,55 @@
+#ifndef SEVENSEGMENT_H_
+#define SEVENSEGMENT_H_
+#include "Std_Types.h"
+
+
+#define SEVENSEGMENT_DEC								0
+#define SEVENSEGMENT_WITHOUTDEC							1
+
+#define SEVENSEGMENT_COMMONANODE						0
+#define SEVENSEGMENT_COMMONCATHODE						1
+
+#if(SEVENSEGMENT_COMMONCATHODE ==1)
+#define SEVENSEGMENT_PORTCATHODE_ID	 				 PORTB_ID
+#define SEVENSEGMENT_PINCATHODE_ID					 PIN0_ID
+#elif(SEVENSEGMENT_COMMONANODE ==1)
+#endif
+#define SEVENSEGMENT_PORTID				 			 PORTA_ID
+#if(SEVENSEGMENT_DEC == 1)
+
+#define SEVENSEGMENT_PIN0ID				  			 PIN0_ID
+#define SEVENSEGMENT_PIN1ID				  			 PIN1_ID
+#define SEVENSEGMENT_PIN2ID				  			 PIN2_ID
+#define SEVENSEGMENT_PIN3ID				  			 PIN3_ID
+
+#elif(SEVENSEGMENT_WITHOUTDEC ==1)
+
+#define SEVENSEGMENT_PIN0ID				  			 PIN0_ID
+#define SEVENSEGMENT_PIN1ID				  			 PIN1_ID
+#define SEVENSEGMENT_PIN2ID				  			 PIN2_ID
+#define SEVENSEGMENT_PIN3ID				  			 PIN3_ID
+#define SEVENSEGMENT_PIN4ID				  			 PIN4_ID
+#define SEVENSEGMENT_PIN5ID				  			 PIN5_ID
+#define SEVENSEGMENT_PIN6ID				  			 PIN6_ID
+
+#define SEVENSEGMENT_ZER0 							   0x00
+#define SEVENSEGMENT_ONE 							   0x0C
+#define SEVENSEGMENT_TWO 							   0xB6
+#define SEVENSEGMENT_THREE 							   0x9E
+#define SEVENSEGMENT_FOUR 							   0xCC
+#define SEVENSEGMENT_FIVE 							   0xDA
+#define SEVENSEGMENT_SIX 							   0xFA
+#define SEVENSEGMENT_SEVEN 							   0x0E
+#define SEVENSEGMENT_EIGHT 							   0xFF
+#define SEVENSEGMENT_NINE 							   0xCF
+
+#endif
+
+
+void SEVENSEGMENT_init(void);
+void SEVENSEGMENT_increment(void);
+void SEVENSEGMENT_decrement(void);
+void SEVENSEGMENT_setNum(uint8 a_num);
+void SEVENSEGMENT_reset(void);
+
+#endif /* SEVENSEGMENT_H_ */

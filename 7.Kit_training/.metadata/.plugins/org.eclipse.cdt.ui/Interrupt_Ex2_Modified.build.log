@@ -1,0 +1,42 @@
+16:15:12 **** Incremental Build of configuration Release for project Interrupt_Ex2_Modified ****
+make all 
+Building file: ../Interrupt_Ex2_Modified.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"Interrupt_Ex2_Modified.d" -MT"Interrupt_Ex2_Modified.o" -c -o "Interrupt_Ex2_Modified.o" "../Interrupt_Ex2_Modified.c"
+Finished building: ../Interrupt_Ex2_Modified.c
+ 
+Building target: Interrupt_Ex2_Modified.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Interrupt_Ex2_Modified.map -mmcu=atmega32 -o "Interrupt_Ex2_Modified.elf"  ./Interrupt_Ex2_Modified.o   
+Finished building target: Interrupt_Ex2_Modified.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Interrupt_Ex2_Modified.elf  >"Interrupt_Ex2_Modified.lss"
+Finished building: Interrupt_Ex2_Modified.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Interrupt_Ex2_Modified.elf  "Interrupt_Ex2_Modified.hex"
+Finished building: Interrupt_Ex2_Modified.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Interrupt_Ex2_Modified.elf  "Interrupt_Ex2_Modified.eep"
+Finished building: Interrupt_Ex2_Modified.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Interrupt_Ex2_Modified.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     356 bytes (1.1% Full)
+(.text + .data + .bootloader)
+
+Data:          2 bytes (0.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+16:15:14 Build Finished. 0 errors, 0 warnings. (took 2s.125ms)
+

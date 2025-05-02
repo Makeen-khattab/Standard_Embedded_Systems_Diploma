@@ -1,0 +1,13 @@
+int Clearbit(int numb,int bitNum)
+{
+
+if(bitNum>32)
+{
+	return 'c';
+
+}
+else
+	return (numb & (~(1<<bitNum)));
+
+}
+

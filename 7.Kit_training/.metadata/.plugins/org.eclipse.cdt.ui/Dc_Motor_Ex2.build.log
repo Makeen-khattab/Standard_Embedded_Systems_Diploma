@@ -1,0 +1,42 @@
+21:49:13 **** Incremental Build of configuration Release for project Dc_Motor_Ex2 ****
+make all 
+Building file: ../Dc_Motor_Ex2.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"Dc_Motor_Ex2.d" -MT"Dc_Motor_Ex2.o" -c -o "Dc_Motor_Ex2.o" "../Dc_Motor_Ex2.c"
+Finished building: ../Dc_Motor_Ex2.c
+ 
+Building target: Dc_Motor_Ex2.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Dc_Motor_Ex2.map -mmcu=atmega32 -o "Dc_Motor_Ex2.elf"  ./Dc_Motor_Ex2.o   
+Finished building target: Dc_Motor_Ex2.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Dc_Motor_Ex2.elf  >"Dc_Motor_Ex2.lss"
+Finished building: Dc_Motor_Ex2.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Dc_Motor_Ex2.elf  "Dc_Motor_Ex2.hex"
+Finished building: Dc_Motor_Ex2.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Dc_Motor_Ex2.elf  "Dc_Motor_Ex2.eep"
+Finished building: Dc_Motor_Ex2.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Dc_Motor_Ex2.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     360 bytes (1.1% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+21:49:16 Build Finished. 0 errors, 0 warnings. (took 2s.486ms)
+

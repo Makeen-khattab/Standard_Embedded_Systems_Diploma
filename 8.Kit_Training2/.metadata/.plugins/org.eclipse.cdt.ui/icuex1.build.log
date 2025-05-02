@@ -1,0 +1,36 @@
+22:39:41 **** Incremental Build of configuration Debug for project icuex1 ****
+make all 
+Building file: ../icuex1.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"icuex1.d" -MT"icuex1.o" -c -o "icuex1.o" "../icuex1.c"
+../icuex1.c: In function 'ICU_calcDutyCycle':
+../icuex1.c:56: warning: pointer targets in passing argument 1 of 'LCD_displayString' differ in signedness
+Finished building: ../icuex1.c
+ 
+Building target: icuex1.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,icuex1.map -mmcu=atmega32 -o "icuex1.elf"  ./gpio.o ./icu.o ./icuex1.o ./lcd.o   
+Finished building target: icuex1.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S icuex1.elf  >"icuex1.lss"
+Finished building: icuex1.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 icuex1.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:   10442 bytes (31.9% Full)
+(.text + .data + .bootloader)
+
+Data:        282 bytes (13.8% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+22:39:43 Build Finished. 0 errors, 1 warnings. (took 2s.216ms)
+

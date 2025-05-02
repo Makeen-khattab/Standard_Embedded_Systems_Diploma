@@ -1,0 +1,56 @@
+19:12:52 **** Incremental Build of configuration Release for project Excersize.1 ****
+make all 
+Building file: ../Excersize.1.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"Excersize.1.d" -MT"Excersize.1.o" -c -o "Excersize.1.o" "../Excersize.1.c"
+Finished building: ../Excersize.1.c
+ 
+Building file: ../button.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"button.d" -MT"button.o" -c -o "button.o" "../button.c"
+../button.c: In function 'BUTTON_state':
+../button.c:40: warning: control reaches end of non-void function
+Finished building: ../button.c
+ 
+Building file: ../gpio.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"gpio.d" -MT"gpio.o" -c -o "gpio.o" "../gpio.c"
+../gpio.c: In function 'GPIO_readPort':
+../gpio.c:534: warning: 'a_portValue' may be used uninitialized in this function
+Finished building: ../gpio.c
+ 
+Building target: Excersize.1.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Excersize.1.map -mmcu=atmega32 -o "Excersize.1.elf"  ./Excersize.1.o ./button.o ./gpio.o   
+Finished building target: Excersize.1.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Excersize.1.elf  >"Excersize.1.lss"
+Finished building: Excersize.1.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Excersize.1.elf  "Excersize.1.hex"
+Finished building: Excersize.1.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Excersize.1.elf  "Excersize.1.eep"
+Finished building: Excersize.1.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Excersize.1.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     996 bytes (3.0% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+19:12:55 Build Finished. 0 errors, 2 warnings. (took 3s.111ms)
+

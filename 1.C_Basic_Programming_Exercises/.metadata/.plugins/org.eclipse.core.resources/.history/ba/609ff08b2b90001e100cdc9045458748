@@ -1,0 +1,9 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(void){
+	int x;
+	scanf("%f",&x);
+	printf("Ascii is %c",x);
+
+}
+

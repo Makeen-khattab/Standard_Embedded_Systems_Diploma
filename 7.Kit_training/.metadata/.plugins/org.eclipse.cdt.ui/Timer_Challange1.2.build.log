@@ -1,0 +1,47 @@
+17:22:36 **** Incremental Build of configuration Release for project Timer_Challange1.2 ****
+make all 
+Building file: ../Timer_Challange1.2.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"Timer_Challange1.2.d" -MT"Timer_Challange1.2.o" -c -o "Timer_Challange1.2.o" "../Timer_Challange1.2.c"
+Finished building: ../Timer_Challange1.2.c
+ 
+Building file: ../sevensegment.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"sevensegment.d" -MT"sevensegment.o" -c -o "sevensegment.o" "../sevensegment.c"
+Finished building: ../sevensegment.c
+ 
+Building target: Timer_Challange1.2.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Timer_Challange1.2.map -mmcu=atmega32 -o "Timer_Challange1.2.elf"  ./Timer_Challange1.2.o ./gpio.o ./sevensegment.o   
+Finished building target: Timer_Challange1.2.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Timer_Challange1.2.elf  >"Timer_Challange1.2.lss"
+Finished building: Timer_Challange1.2.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Timer_Challange1.2.elf  "Timer_Challange1.2.hex"
+Finished building: Timer_Challange1.2.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Timer_Challange1.2.elf  "Timer_Challange1.2.eep"
+Finished building: Timer_Challange1.2.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Timer_Challange1.2.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1754 bytes (5.4% Full)
+(.text + .data + .bootloader)
+
+Data:          2 bytes (0.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+17:22:39 Build Finished. 0 errors, 0 warnings. (took 2s.998ms)
+

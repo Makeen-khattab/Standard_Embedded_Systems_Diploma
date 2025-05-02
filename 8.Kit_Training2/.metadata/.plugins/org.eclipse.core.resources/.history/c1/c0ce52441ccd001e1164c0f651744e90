@@ -1,0 +1,127 @@
+#include"gpio.h"
+#include"Keypad.h"
+
+
+void KEYPAD_init(void)
+{
+GPIO_setupPinDirection(START_PORT_COLUMN,START_PIN_COLUMN, PIN_INPUT);
+GPIO_setupPinDirection(START_PORT_COLUMN,START_PIN_COLUMN+1, PIN_INPUT);
+GPIO_setupPinDirection(START_PORT_COLUMN,START_PIN_COLUMN+2, PIN_INPUT);
+#if ( KEYPAD_4x4 == 1)
+{
+	GPIO_setupPinDirection(START_PORT_COLUMN,START_PIN_COLUMN+3, PIN_INPUT);
+}
+#elif( KEYPAD_4x3 == 1)
+/* Do nothing*/
+#endif
+}
+uint8 KEYPAD_getPressedKey(void)
+{
+	uint8 a_rowNum,a_colNum;
+
+	for(a_rowNum=0;a_rowNum<FORLOOP_ROW; a_rowNum++)
+	{
+		GPIO_setupPinDirection(START_PORT_ROW,(START_PIN_ROW + a_rowNum), PIN_OUTPUT);
+		GPIO_writePin(START_PORT_ROW, START_PIN_ROW,WRITEVALUE);
+
+		for(a_colNum=0;a_colNum<FORLOOP_COL; a_colNum++)
+		{
+			if((GPIO_readPin(START_PORT_COLUMN, START_PIN_COLUMN)) == COMPVALUE	)
+			{
+
+				return  KEYPAD_adjustKeyNumber(BUTTON_POSITION);
+			}
+
+		}
+		GPIO_setupPinDirection(START_PORT_ROW,(START_PIN_ROW + a_rowNum), PIN_INPUT);
+
+	}
+
+return NOTHING_PRESSED;
+}
+
+uint8 KEYPAD_adjustKeyNumber(uint8 a_buttonPosition)
+{
+#if(KEYPAD_4x4==1)
+switch(a_buttonPosition)
+{
+case 1 :
+	return 7;
+case 2 :
+	return 8;
+case 3 :
+	return 9;
+case 4 :
+	return '÷';
+case 5 :
+	return 4;
+case 6 :
+	return 5;
+case 7 :
+	return 6;
+case 8 :
+	return 'x';
+case 9 :
+	return 1;
+case 10 :
+	return 2;
+case 11 :
+	return 3;
+case 12 :
+	return '-';
+case 13 :
+	return 'o';
+case 14 :
+	return 0;
+case 15 :
+	return '=';
+case 16 :
+	return '+';
+default:
+;
+
+
+}
+
+#elif(KEYPAD_4x3==1)
+switch(a_buttonPosition)
+{
+case 1 :
+	return 1;
+case 2 :
+	return 2;
+case 3 :
+	return 3;
+case 4 :
+	return 4;
+case 5 :
+	return 5;
+case 6 :
+	return 6;
+case 7 :
+	return 7;
+case 8 :
+	return 8;
+case 9 :
+	return 9;
+case 10 :
+	return '*';
+case 11 :
+	return 0;
+case 12 :
+	return '#';
+
+default:
+	;
+}
+
+#endif
+
+
+
+}
+
+
+
+
+

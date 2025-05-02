@@ -1,0 +1,178 @@
+
+Timer_Ex4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000122  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         0000039c  00000000  00000000  00000178  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      000006ae  00000000  00000000  00000514  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__vector_10>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 36 00 	call	0x6c	; 0x6c <main>
+  64:	0c 94 8f 00 	jmp	0x11e	; 0x11e <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <main>:
+#include<avr/interrupt.h>
+#include<util/delay.h>
+/*********F_CPU=1000000UL*************/
+void Timer0_Init(void);
+int main(void)
+{
+  6c:	df 93       	push	r29
+  6e:	cf 93       	push	r28
+  70:	cd b7       	in	r28, 0x3d	; 61
+  72:	de b7       	in	r29, 0x3e	; 62
+	/* Application initialization*/
+DDRB|=1<<PB3;
+  74:	a7 e3       	ldi	r26, 0x37	; 55
+  76:	b0 e0       	ldi	r27, 0x00	; 0
+  78:	e7 e3       	ldi	r30, 0x37	; 55
+  7a:	f0 e0       	ldi	r31, 0x00	; 0
+  7c:	80 81       	ld	r24, Z
+  7e:	88 60       	ori	r24, 0x08	; 8
+  80:	8c 93       	st	X, r24
+PORTB|=1<<PB3;
+  82:	a8 e3       	ldi	r26, 0x38	; 56
+  84:	b0 e0       	ldi	r27, 0x00	; 0
+  86:	e8 e3       	ldi	r30, 0x38	; 56
+  88:	f0 e0       	ldi	r31, 0x00	; 0
+  8a:	80 81       	ld	r24, Z
+  8c:	88 60       	ori	r24, 0x08	; 8
+  8e:	8c 93       	st	X, r24
+Timer0_Init();
+  90:	0e 94 4b 00 	call	0x96	; 0x96 <Timer0_Init>
+  94:	ff cf       	rjmp	.-2      	; 0x94 <main+0x28>
+
+00000096 <Timer0_Init>:
+
+				}
+
+}
+void Timer0_Init(void)
+{
+  96:	df 93       	push	r29
+  98:	cf 93       	push	r28
+  9a:	cd b7       	in	r28, 0x3d	; 61
+  9c:	de b7       	in	r29, 0x3e	; 62
+SREG|=1<<7;
+  9e:	af e5       	ldi	r26, 0x5F	; 95
+  a0:	b0 e0       	ldi	r27, 0x00	; 0
+  a2:	ef e5       	ldi	r30, 0x5F	; 95
+  a4:	f0 e0       	ldi	r31, 0x00	; 0
+  a6:	80 81       	ld	r24, Z
+  a8:	80 68       	ori	r24, 0x80	; 128
+  aa:	8c 93       	st	X, r24
+TCCR0= (1<<WGM01) | (1<<CS00) | (1<<FOC0);
+  ac:	e3 e5       	ldi	r30, 0x53	; 83
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	89 e8       	ldi	r24, 0x89	; 137
+  b2:	80 83       	st	Z, r24
+TCNT0=0;
+  b4:	e2 e5       	ldi	r30, 0x52	; 82
+  b6:	f0 e0       	ldi	r31, 0x00	; 0
+  b8:	10 82       	st	Z, r1
+OCR0=0xFA;//  Compare Value 0xFA=250
+  ba:	ec e5       	ldi	r30, 0x5C	; 92
+  bc:	f0 e0       	ldi	r31, 0x00	; 0
+  be:	8a ef       	ldi	r24, 0xFA	; 250
+  c0:	80 83       	st	Z, r24
+TIMSK|=1<<OCIE0;// Enabling the Peripheral compare mode interrupt
+  c2:	a9 e5       	ldi	r26, 0x59	; 89
+  c4:	b0 e0       	ldi	r27, 0x00	; 0
+  c6:	e9 e5       	ldi	r30, 0x59	; 89
+  c8:	f0 e0       	ldi	r31, 0x00	; 0
+  ca:	80 81       	ld	r24, Z
+  cc:	82 60       	ori	r24, 0x02	; 2
+  ce:	8c 93       	st	X, r24
+
+}
+  d0:	cf 91       	pop	r28
+  d2:	df 91       	pop	r29
+  d4:	08 95       	ret
+
+000000d6 <__vector_10>:
+ISR(TIMER0_COMP_vect)
+{
+  d6:	1f 92       	push	r1
+  d8:	0f 92       	push	r0
+  da:	0f b6       	in	r0, 0x3f	; 63
+  dc:	0f 92       	push	r0
+  de:	11 24       	eor	r1, r1
+  e0:	8f 93       	push	r24
+  e2:	9f 93       	push	r25
+  e4:	af 93       	push	r26
+  e6:	bf 93       	push	r27
+  e8:	ef 93       	push	r30
+  ea:	ff 93       	push	r31
+  ec:	df 93       	push	r29
+  ee:	cf 93       	push	r28
+  f0:	cd b7       	in	r28, 0x3d	; 61
+  f2:	de b7       	in	r29, 0x3e	; 62
+
+	PORTB^=1<<PB3;
+  f4:	a8 e3       	ldi	r26, 0x38	; 56
+  f6:	b0 e0       	ldi	r27, 0x00	; 0
+  f8:	e8 e3       	ldi	r30, 0x38	; 56
+  fa:	f0 e0       	ldi	r31, 0x00	; 0
+  fc:	90 81       	ld	r25, Z
+  fe:	88 e0       	ldi	r24, 0x08	; 8
+ 100:	89 27       	eor	r24, r25
+ 102:	8c 93       	st	X, r24
+
+}
+ 104:	cf 91       	pop	r28
+ 106:	df 91       	pop	r29
+ 108:	ff 91       	pop	r31
+ 10a:	ef 91       	pop	r30
+ 10c:	bf 91       	pop	r27
+ 10e:	af 91       	pop	r26
+ 110:	9f 91       	pop	r25
+ 112:	8f 91       	pop	r24
+ 114:	0f 90       	pop	r0
+ 116:	0f be       	out	0x3f, r0	; 63
+ 118:	0f 90       	pop	r0
+ 11a:	1f 90       	pop	r1
+ 11c:	18 95       	reti
+
+0000011e <_exit>:
+ 11e:	f8 94       	cli
+
+00000120 <__stop_program>:
+ 120:	ff cf       	rjmp	.-2      	; 0x120 <__stop_program>

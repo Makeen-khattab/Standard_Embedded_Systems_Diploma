@@ -1,0 +1,22 @@
+#include<avr/io.h>
+#include<util/delay.h>
+#include<avr/interrupt.h>
+int main(void)
+{
+	/* Application initialization*/
+	DDRC|=0x07;
+
+
+	/* Super_Loop*/
+		while(1)
+		{
+
+
+
+
+		}
+
+
+
+
+}

@@ -1,0 +1,7 @@
+void ROR(unsigned char * varName_Ptr )
+{
+
+	*varName_Ptr= ((*varName_Ptr)>>4) | ((*varName_Ptr)<<4);
+
+}
+

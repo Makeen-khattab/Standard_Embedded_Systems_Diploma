@@ -1,0 +1,14 @@
+#ifndef Q2_H_
+#define Q2_H_
+
+#define SUM_OF_ARRAY(ARR,NUM){\
+	int i;\
+	int sum =0;\
+for(i=0;i<NUM;i++)\
+{\
+sum+=ARR;\
+}\
+}
+
+
+#endif /* Q2_H_ */

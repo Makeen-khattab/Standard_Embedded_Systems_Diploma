@@ -1,0 +1,11 @@
+11:14:22 **** Rebuild of configuration Debug for project 2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o 2.o "..\\2.c" 
+gcc -o 2.exe 2.o 
+Info: Nothing to build for 2
+Info: Nothing to build for 2
+11:18:34 **** Rebuild of configuration Debug for project 3 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o 3.o "..\\3.c" 
+gcc -o 3.exe 3.o 
+Info: Nothing to build for 3

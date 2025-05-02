@@ -1,0 +1,7 @@
+10:53:25 **** Rebuild of configuration Debug for project EX[11] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX[11].o "..\\EX[11].c" 
+gcc -o EX[11].exe EX[11].o 
+
+10:53:26 Build Finished. 0 errors, 0 warnings. (took 1s.109ms)
+

@@ -1,0 +1,7 @@
+00:14:41 **** Incremental Build of configuration Debug for project EX[23] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX[23].o "..\\EX[23].c" 
+gcc -o EX[23].exe EX[23].o 
+
+00:14:42 Build Finished. 0 errors, 0 warnings. (took 1s.294ms)
+

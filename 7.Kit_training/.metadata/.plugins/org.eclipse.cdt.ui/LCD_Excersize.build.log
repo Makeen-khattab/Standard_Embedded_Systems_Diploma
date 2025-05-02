@@ -1,0 +1,42 @@
+22:33:28 **** Incremental Build of configuration Release for project LCD_Excersize ****
+make all 
+Building file: ../lcd.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"lcd.d" -MT"lcd.o" -c -o "lcd.o" "../lcd.c"
+Finished building: ../lcd.c
+ 
+Building target: LCD_Excersize.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,LCD_Excersize.map -mmcu=atmega32 -o "LCD_Excersize.elf"  ./LCD_Excersize.o ./gpio.o ./lcd.o   
+Finished building target: LCD_Excersize.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S LCD_Excersize.elf  >"LCD_Excersize.lss"
+Finished building: LCD_Excersize.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex LCD_Excersize.elf  "LCD_Excersize.hex"
+Finished building: LCD_Excersize.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex LCD_Excersize.elf  "LCD_Excersize.eep"
+Finished building: LCD_Excersize.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 LCD_Excersize.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    1044 bytes (3.2% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+22:33:32 Build Finished. 0 errors, 0 warnings. (took 3s.617ms)
+

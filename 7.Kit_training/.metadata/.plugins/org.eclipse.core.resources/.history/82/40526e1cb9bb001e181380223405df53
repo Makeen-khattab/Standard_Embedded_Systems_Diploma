@@ -1,0 +1,26 @@
+#include<avr/io.h>
+#include<util/delay.h>
+#include<avr/interrupt.h>
+typedef enum
+{
+	CLOCK_WISE,
+	ANTI_CLOCK_WISE,
+	STOP
+} Motor_Direction;
+int main(void)
+{
+	/* Application initialization*/
+		PORTA|= (1<<PC0)|(1<<PC1)|(1<<PC2);
+	Motor_Direction Direction;
+			/* Super_Loop*/
+				while(1)
+				{
+
+
+				}
+
+
+
+
+
+}

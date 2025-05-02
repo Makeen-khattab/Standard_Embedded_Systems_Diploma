@@ -1,0 +1,42 @@
+09:07:19 **** Incremental Build of configuration Release for project Challenge.1 ****
+make all 
+Building file: ../Challenge.1.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=16000000UL -MMD -MP -MF"Challenge.1.d" -MT"Challenge.1.o" -c -o "Challenge.1.o" "../Challenge.1.c"
+Finished building: ../Challenge.1.c
+ 
+Building target: Challenge.1.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,Challenge.1.map -mmcu=atmega32 -o "Challenge.1.elf"  ./Challenge.1.o   
+Finished building target: Challenge.1.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Challenge.1.elf  >"Challenge.1.lss"
+Finished building: Challenge.1.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex Challenge.1.elf  "Challenge.1.hex"
+Finished building: Challenge.1.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Challenge.1.elf  "Challenge.1.eep"
+Finished building: Challenge.1.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 Challenge.1.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:     190 bytes (0.6% Full)
+(.text + .data + .bootloader)
+
+Data:          0 bytes (0.0% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+09:07:20 Build Finished. 0 errors, 0 warnings. (took 1s.287ms)
+

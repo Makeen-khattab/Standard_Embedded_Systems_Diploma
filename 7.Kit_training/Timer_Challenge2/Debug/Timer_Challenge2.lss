@@ -1,0 +1,239 @@
+
+Timer_Challenge2.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000180  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000001  00800060  00800060  000001f4  2**0
+                  ALLOC
+  2 .stab         000003f0  00000000  00000000  000001f4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      000006cd  00000000  00000000  000005e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__vector_10>
+  2c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	a1 36       	cpi	r26, 0x61	; 97
+  6c:	b1 07       	cpc	r27, r17
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 3e 00 	call	0x7c	; 0x7c <main>
+  74:	0c 94 be 00 	jmp	0x17c	; 0x17c <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <main>:
+#include<util/delay.h>
+#define F_CPU		8000000UL
+unsigned char Tick=0;
+void Timer0_PWM_Init(void);
+int main(void)
+{
+  7c:	df 93       	push	r29
+  7e:	cf 93       	push	r28
+  80:	cd b7       	in	r28, 0x3d	; 61
+  82:	de b7       	in	r29, 0x3e	; 62
+	/* Application initialization*/
+	DDRC|=0x07;
+  84:	a4 e3       	ldi	r26, 0x34	; 52
+  86:	b0 e0       	ldi	r27, 0x00	; 0
+  88:	e4 e3       	ldi	r30, 0x34	; 52
+  8a:	f0 e0       	ldi	r31, 0x00	; 0
+  8c:	80 81       	ld	r24, Z
+  8e:	87 60       	ori	r24, 0x07	; 7
+  90:	8c 93       	st	X, r24
+	PORTC|=0x07;//Initialize the first three pins
+  92:	a5 e3       	ldi	r26, 0x35	; 53
+  94:	b0 e0       	ldi	r27, 0x00	; 0
+  96:	e5 e3       	ldi	r30, 0x35	; 53
+  98:	f0 e0       	ldi	r31, 0x00	; 0
+  9a:	80 81       	ld	r24, Z
+  9c:	87 60       	ori	r24, 0x07	; 7
+  9e:	8c 93       	st	X, r24
+	Timer0_PWM_Init();
+  a0:	0e 94 53 00 	call	0xa6	; 0xa6 <Timer0_PWM_Init>
+  a4:	ff cf       	rjmp	.-2      	; 0xa4 <main+0x28>
+
+000000a6 <Timer0_PWM_Init>:
+
+
+}
+
+void Timer0_PWM_Init(void)
+{
+  a6:	df 93       	push	r29
+  a8:	cf 93       	push	r28
+  aa:	cd b7       	in	r28, 0x3d	; 61
+  ac:	de b7       	in	r29, 0x3e	; 62
+	/******************************************************************
+	 * ***************************************************************
+	 * Prescaler is =8 and freq=8Megahz therefore each count is 1 microsec
+	 * *****************************************************************/
+	SREG|=1<<7;
+  ae:	af e5       	ldi	r26, 0x5F	; 95
+  b0:	b0 e0       	ldi	r27, 0x00	; 0
+  b2:	ef e5       	ldi	r30, 0x5F	; 95
+  b4:	f0 e0       	ldi	r31, 0x00	; 0
+  b6:	80 81       	ld	r24, Z
+  b8:	80 68       	ori	r24, 0x80	; 128
+  ba:	8c 93       	st	X, r24
+	TCCR0= (1<<FOC0) | (1<<WGM01) | (1<<CS01);
+  bc:	e3 e5       	ldi	r30, 0x53	; 83
+  be:	f0 e0       	ldi	r31, 0x00	; 0
+  c0:	8a e8       	ldi	r24, 0x8A	; 138
+  c2:	80 83       	st	Z, r24
+	TCNT0=0;
+  c4:	e2 e5       	ldi	r30, 0x52	; 82
+  c6:	f0 e0       	ldi	r31, 0x00	; 0
+  c8:	10 82       	st	Z, r1
+	OCR0=50;
+  ca:	ec e5       	ldi	r30, 0x5C	; 92
+  cc:	f0 e0       	ldi	r31, 0x00	; 0
+  ce:	82 e3       	ldi	r24, 0x32	; 50
+  d0:	80 83       	st	Z, r24
+	TIMSK|=1<<OCIE0;
+  d2:	a9 e5       	ldi	r26, 0x59	; 89
+  d4:	b0 e0       	ldi	r27, 0x00	; 0
+  d6:	e9 e5       	ldi	r30, 0x59	; 89
+  d8:	f0 e0       	ldi	r31, 0x00	; 0
+  da:	80 81       	ld	r24, Z
+  dc:	82 60       	ori	r24, 0x02	; 2
+  de:	8c 93       	st	X, r24
+}
+  e0:	cf 91       	pop	r28
+  e2:	df 91       	pop	r29
+  e4:	08 95       	ret
+
+000000e6 <__vector_10>:
+ISR(TIMER0_COMP_vect)
+{   Tick++;
+  e6:	1f 92       	push	r1
+  e8:	0f 92       	push	r0
+  ea:	0f b6       	in	r0, 0x3f	; 63
+  ec:	0f 92       	push	r0
+  ee:	11 24       	eor	r1, r1
+  f0:	8f 93       	push	r24
+  f2:	9f 93       	push	r25
+  f4:	af 93       	push	r26
+  f6:	bf 93       	push	r27
+  f8:	ef 93       	push	r30
+  fa:	ff 93       	push	r31
+  fc:	df 93       	push	r29
+  fe:	cf 93       	push	r28
+ 100:	cd b7       	in	r28, 0x3d	; 61
+ 102:	de b7       	in	r29, 0x3e	; 62
+ 104:	80 91 60 00 	lds	r24, 0x0060
+ 108:	8f 5f       	subi	r24, 0xFF	; 255
+ 10a:	80 93 60 00 	sts	0x0060, r24
+	PORTC^=1<<PC0;
+ 10e:	a5 e3       	ldi	r26, 0x35	; 53
+ 110:	b0 e0       	ldi	r27, 0x00	; 0
+ 112:	e5 e3       	ldi	r30, 0x35	; 53
+ 114:	f0 e0       	ldi	r31, 0x00	; 0
+ 116:	90 81       	ld	r25, Z
+ 118:	81 e0       	ldi	r24, 0x01	; 1
+ 11a:	89 27       	eor	r24, r25
+ 11c:	8c 93       	st	X, r24
+	if(!(Tick%2))
+ 11e:	80 91 60 00 	lds	r24, 0x0060
+ 122:	88 2f       	mov	r24, r24
+ 124:	90 e0       	ldi	r25, 0x00	; 0
+ 126:	81 70       	andi	r24, 0x01	; 1
+ 128:	90 70       	andi	r25, 0x00	; 0
+ 12a:	00 97       	sbiw	r24, 0x00	; 0
+ 12c:	41 f4       	brne	.+16     	; 0x13e <__vector_10+0x58>
+	{
+	PORTC^=1<<PC1;
+ 12e:	a5 e3       	ldi	r26, 0x35	; 53
+ 130:	b0 e0       	ldi	r27, 0x00	; 0
+ 132:	e5 e3       	ldi	r30, 0x35	; 53
+ 134:	f0 e0       	ldi	r31, 0x00	; 0
+ 136:	90 81       	ld	r25, Z
+ 138:	82 e0       	ldi	r24, 0x02	; 2
+ 13a:	89 27       	eor	r24, r25
+ 13c:	8c 93       	st	X, r24
+	}
+	if(!(Tick%4))
+ 13e:	80 91 60 00 	lds	r24, 0x0060
+ 142:	88 2f       	mov	r24, r24
+ 144:	90 e0       	ldi	r25, 0x00	; 0
+ 146:	83 70       	andi	r24, 0x03	; 3
+ 148:	90 70       	andi	r25, 0x00	; 0
+ 14a:	00 97       	sbiw	r24, 0x00	; 0
+ 14c:	51 f4       	brne	.+20     	; 0x162 <__vector_10+0x7c>
+	{
+		PORTC^=1<<PC2;
+ 14e:	a5 e3       	ldi	r26, 0x35	; 53
+ 150:	b0 e0       	ldi	r27, 0x00	; 0
+ 152:	e5 e3       	ldi	r30, 0x35	; 53
+ 154:	f0 e0       	ldi	r31, 0x00	; 0
+ 156:	90 81       	ld	r25, Z
+ 158:	84 e0       	ldi	r24, 0x04	; 4
+ 15a:	89 27       	eor	r24, r25
+ 15c:	8c 93       	st	X, r24
+		Tick=0; /* We force it to be zero as the unsigned char overflows after 255*/
+ 15e:	10 92 60 00 	sts	0x0060, r1
+	}
+
+}
+ 162:	cf 91       	pop	r28
+ 164:	df 91       	pop	r29
+ 166:	ff 91       	pop	r31
+ 168:	ef 91       	pop	r30
+ 16a:	bf 91       	pop	r27
+ 16c:	af 91       	pop	r26
+ 16e:	9f 91       	pop	r25
+ 170:	8f 91       	pop	r24
+ 172:	0f 90       	pop	r0
+ 174:	0f be       	out	0x3f, r0	; 63
+ 176:	0f 90       	pop	r0
+ 178:	1f 90       	pop	r1
+ 17a:	18 95       	reti
+
+0000017c <_exit>:
+ 17c:	f8 94       	cli
+
+0000017e <__stop_program>:
+ 17e:	ff cf       	rjmp	.-2      	; 0x17e <__stop_program>

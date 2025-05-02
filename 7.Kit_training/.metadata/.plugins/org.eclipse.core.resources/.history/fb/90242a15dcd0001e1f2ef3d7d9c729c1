@@ -1,0 +1,40 @@
+/*
+ * Excersize.1.c
+ *
+ *  Created on: Jan 1, 2024
+ *      Author: Dell
+ */
+#include"button.h"
+#include<avr/io.h>
+#include "gpio.h"
+int main(void)
+{
+/* Application initialization*/
+DDRC|=1<<1;
+/* Super_Loop*/
+while(1)
+{
+	if( (PINC & (1<<1)) ==0)
+	{
+		PORTC|=1<<1;
+	}
+	else
+		PORTC&=~(1<<1);
+
+
+
+
+}
+
+
+
+
+
+
+
+
+}
+
+
+
+

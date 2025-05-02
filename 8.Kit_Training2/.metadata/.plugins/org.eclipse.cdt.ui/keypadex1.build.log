@@ -1,0 +1,34 @@
+19:32:29 **** Incremental Build of configuration Debug for project keypadex1 ****
+make all 
+Building file: ../keypadex1.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"keypadex1.d" -MT"keypadex1.o" -c -o "keypadex1.o" "../keypadex1.c"
+Finished building: ../keypadex1.c
+ 
+Building target: keypadex1.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,keypadex1.map -mmcu=atmega32 -o "keypadex1.elf"  ./gpio.o ./keypad.o ./keypadex1.o ./sevensegment.o   
+Finished building target: keypadex1.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S keypadex1.elf  >"keypadex1.lss"
+Finished building: keypadex1.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 keypadex1.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    6340 bytes (19.3% Full)
+(.text + .data + .bootloader)
+
+Data:          9 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+19:32:30 Build Finished. 0 errors, 0 warnings. (took 1s.578ms)
+

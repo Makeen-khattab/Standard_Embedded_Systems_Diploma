@@ -1,0 +1,10 @@
+09:07:26 **** Build of configuration Debug for project Excersize.3 ****
+make all 
+Building file: ../Excersize.3.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=1000000UL -MMD -MP -MF"Excersize.3.d" -MT"Excersize.3.o" -c -o "Excersize.3.o" "../Excersize.3.c"
+make: *** [Excersize.3.o] Interrupt
+Command canceled
+
+09:07:26 Build Cancelled. (took 235ms)
+

@@ -1,0 +1,7 @@
+11:21:29 **** Incremental Build of configuration Debug for project EX[10] ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o EX[10].o "..\\EX[10].c" 
+gcc -o EX[10].exe EX[10].o 
+
+11:21:30 Build Finished. 0 errors, 0 warnings. (took 1s.1ms)
+

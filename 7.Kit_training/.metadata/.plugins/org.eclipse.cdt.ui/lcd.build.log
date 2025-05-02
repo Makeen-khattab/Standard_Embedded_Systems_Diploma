@@ -1,0 +1,7 @@
+22:04:56 **** Clean-only build of configuration Debug for project lcd ****
+make clean 
+rm -rf  ./gpio.o ./lcd.o  sizedummy  lcd.lss  ./gpio.d ./lcd.d  lcd.elf
+ 
+
+22:04:56 Build Finished. 0 errors, 0 warnings. (took 368ms)
+
