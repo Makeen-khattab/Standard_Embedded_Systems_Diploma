@@ -1,7 +1,0 @@
-10:18:40 **** Incremental Build of configuration Debug for project Problem12 ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o Problem12.o "..\\Problem12.c" 
-gcc -o Problem12.exe Problem12.o 
-
-10:18:42 Build Finished. 0 errors, 0 warnings. (took 1s.411ms)
-
